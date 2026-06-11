@@ -1,8 +1,5 @@
 from ortools.constraint_solver import pywrapcp, routing_enums_pb2
 
-# Hapus import dari config jika tidak diperlukan lagi
-# from config import NUM_VEHICLES, VEHICLE_CAPACITY 
-
 def solve_vrp(distance_matrix, demands, num_vehicles, capacity): # Terima 4 argumen
 
     manager = pywrapcp.RoutingIndexManager(
