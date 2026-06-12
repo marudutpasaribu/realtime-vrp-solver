@@ -1,52 +1,38 @@
-# VRP OSM Optimization System
+# VRP Optimization System
 
-## Overview
-
-This project implements the Vehicle Routing Problem (VRP) using OR-Tools with real-world geospatial data from OpenStreetMap (OSM).
-
-The system optimizes vehicle routes under capacity constraints using a distance matrix based on Haversine distance.
+Sistem optimisasi logistik untuk menyelesaikan _Vehicle Routing Problem_ (VRP). Proyek ini menggunakan algoritma dari Google OR-Tools untuk mencari rute pengiriman barang yang paling efisien dengan mempertimbangkan batasan kapasitas kendaraan dan lokasi geografis.
 
 ---
 
-## Features
+## Fitur Utama
 
-- Vehicle Routing Problem (VRP) solver using OR-Tools
-- OpenStreetMap (OSMnx) data integration
-- Haversine distance matrix computation
-- Capacity-constrained routing
-- FastAPI inference endpoint
-- Route visualization using Matplotlib
-- Evaluation & benchmarking script
-
----
-
-## Mathematical Formulation
-
-### Objective
-
-Minimize total travel distance:
-
-Minimize:
-Σ d(i, j) \* x(i, j)
-
-### Constraints:
-
-- Each node is visited exactly once
-- Each vehicle respects capacity limit
-- Routes start and end at depot
+- **Solver VRP:** Menggunakan `OR-Tools` untuk mencari rute optimal secara efisien.
+- **Integrasi Data:** Mengambil data lokasi nyata dari OpenStreetMap menggunakan `OSMnx`.
+- **Perhitungan Jarak:** Menggunakan rumus _Haversine_ untuk menghitung jarak antar titik secara akurat.
+- **API Ready:** Dilengkapi dengan endpoint API menggunakan `FastAPI` untuk integrasi sistem secara real-time.
+- **Visualisasi:** Mendukung pembuatan visualisasi rute hasil optimisasi menggunakan `Matplotlib`.
+- **Evaluasi Otomatis:** Memiliki skrip untuk mengukur performa (_benchmarking_) waktu dan jarak (menggunakan `pandas`).
 
 ---
 
-## System Architecture
+## Logika Matematis
 
-OSM Data → Preprocessing → Distance Matrix → OR-Tools Solver → Routes → Visualization
+### Tujuan (Objective Function)
+
+Meminimalkan total jarak tempuh seluruh kendaraan:
+**Minimalkan: Σ d(i, j) \* x(i, j)**
+
+### Batasan (Constraints)
+
+- **Kunjungan:** Setiap pelanggan (node) harus dikunjungi tepat satu kali.
+- **Kapasitas:** Total beban pada setiap kendaraan tidak boleh melebihi kapasitas yang ditentukan.
+- **Depot:** Setiap rute harus dimulai dan diakhiri di Depot (pusat lokasi).
 
 ---
 
-## How to Run
+## Cara Menjalankan
 
-### Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
+1. **Install library yang dibutuhkan:**
+   ```bash
+   pip install -r requirements.txt
+   ```
