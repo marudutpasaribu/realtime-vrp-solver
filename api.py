@@ -8,6 +8,7 @@ import time
 
 from solver import solve_vrp
 from preprocessing import build_distance_matrix
+from eval import calculate_total_distance  # Pastikan diimpor di sini
 
 app = FastAPI(
     title="VRP Optimization System",
@@ -42,8 +43,13 @@ async def solve(request: VRPRequest):
     try:
         matrix, demands = build_distance_matrix(request.nodes)
         routes = solve_vrp(matrix, demands, request.num_vehicles, request.capacity)
+        
+        # Hitung total jarak sebelum return
+        total_dist = calculate_total_distance(routes, matrix)
+        
         return {
             "status": "success",
+            "total_distance": round(total_dist, 2),
             "num_vehicles": request.num_vehicles,
             "capacity": request.capacity,
             "routes": routes
