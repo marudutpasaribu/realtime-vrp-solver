@@ -6,3 +6,4 @@ osmnx==2.1.0
 networkx==3.6.1
 matplotlib==3.10.9
 pydantic==2.13.4
+pandas==2.2.3
